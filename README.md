@@ -3,13 +3,13 @@
 #### Requirements:
 
 - Python >= 3.12
-- Java 1y
+- Java 17
 
 #### Steps:
 
 Follow these steps to setup a local environment on your machine
 
-1. Download Play! 1.8 from [here](https://github.com/jaesga/play1/releases/download/1.8/play-1.8.0.zip)
+1. Download Play! 1.8.0 from [here](https://github.com/jaesga/play1/releases/download/1.8/play-1.8.0.zip)
 2. Unzip previous file
 3. Add `play` to your PATH environment variable
 4. Execute `play run`
