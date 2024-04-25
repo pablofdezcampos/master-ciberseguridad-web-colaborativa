@@ -16,25 +16,25 @@ public class PublicContentBase extends Controller {
 
         User existingUser = User.findByUsername(username);
         if (existingUser != null) {
-            flash().error("El nombre de usuario ya está en uso. Por favor, elija otro.");
+            flash().error("El nombre de usuario ya estï¿½ en uso. Por favor, elija otro.");
             return redirect(routes.PublicContentBase.register()); // Volver al formulario de registro
         }
 
-        // Verificar si las contraseñas coinciden
+        // Verificar si las contraseï¿½as coinciden
         if (!password.equals(passwordCheck)) {
-            flash().error("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+            flash().error("Las contraseï¿½as no coinciden. Por favor, intï¿½ntelo de nuevo.");
             return redirect(routes.PublicContentBase.register()); // Volver al formulario de registro
         }
 
-        // Verificar si la contraseña cumple con las políticas de seguridad
+        // Verificar si la contraseï¿½a cumple con las polï¿½ticas de seguridad
         if (!isValidPassword(password)) {
             flash().error(
-                    "La contraseña no cumple con los requisitos de seguridad. Por favor, elija una contraseña más segura.");
+                    "La contraseï¿½a no cumple con los requisitos de seguridad. Por favor, elija una contraseï¿½a mï¿½s segura.");
             return redirect(routes.PublicContentBase.register()); // Volver al formulario de registro
         }
 
         // Crear usuario y guardar en la base de datos
-        String hashedPassword = HashUtils.getBcrypt(password); // Utilizar bcrypt para cifrar la contraseña
+        String hashedPassword = HashUtils.getBcrypt(password); // Utilizar bcrypt para cifrar la contraseï¿½a
         User u = new User(username, hashedPassword, type, -1);
         u.save();
         return redirect(routes.PublicContentBase.registerComplete());
@@ -45,14 +45,14 @@ public class PublicContentBase extends Controller {
     }
     
     private static boolean isValidPassword(String password) {
-        // Aplicar políticas de contraseñas seguras
-        // Por ejemplo, verificar longitud mínima, uso de caracteres mixtos, etc.
-        // Devuelve true si la contraseña es válida, false de lo contrario
-        return password.length() >= 8 // Longitud mínima de 8 caracteres
-                && password.matches(".*\\d.*") // Contiene al menos un dígito
-                && password.matches(".*[a-z].*") // Contiene al menos una letra minúscula
-                && password.matches(".*[A-Z].*") // Contiene al menos una letra mayúscula
-                && password.matches(".*[!@#$%^&*()-+=\\[\\]{};:',.<>?/~_].*"); // Contiene al menos un carácter especial
+        // Aplicar polï¿½ticas de contraseï¿½as seguras
+        // Por ejemplo, verificar longitud mï¿½nima, uso de caracteres mixtos, etc.
+        // Devuelve true si la contraseï¿½a es vï¿½lida, false de lo contrario
+        return password.length() >= 8 // Longitud mï¿½nima de 8 caracteres
+                && password.matches(".*\\d.*") // Contiene al menos un dï¿½gito
+                && password.matches(".*[a-z].*") // Contiene al menos una letra minï¿½scula
+                && password.matches(".*[A-Z].*") // Contiene al menos una letra mayï¿½scula
+                && password.matches(".*[!@#$%^&*()-+=\\[\\]{};:',.<>?/~_].*"); // Contiene al menos un carï¿½cter especial
     }
 
     public static void registerComplete() {
